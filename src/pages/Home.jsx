@@ -1,16 +1,32 @@
-import { useSelector, useDispatch } from "react-redux";
-import { ayirish, qoshish } from "../store/feature/countSlice";
+import { useState } from "react"
+
 
 const Home = () => {
+  const [text, setText] = useState("");
+  const [array, setArray] = useState([]);
 
-  const value = useSelector((state) => state.counter.value)
-  const dispatch = useDispatch();
+  const addToDo = () => {
+    if (text.length < 4) {
+      return alert("kamida 4 ta harf yozing");
+    };
+
+    array.push(text);
+    setText("");
+  }
+
   return (
     <div>
-      <p>counter: {value}</p>
+      <input value={text} onChange={e => setText(e.target.value)} className="border" type="text" />
+      <button onClick={addToDo} className="text-white bg-blue-700 px-5 py-1 ">add</button>
 
-      <button onClick={() => dispatch(ayirish())}>ayirish</button>
-      <button onClick={() => dispatch(qoshish())} >qoshish</button>
+      {
+        array.map((soz, index) => (
+          <li key={index}>
+            <p>{soz}</p>
+          </li>
+        ))
+      }
+
     </div>
   )
 }

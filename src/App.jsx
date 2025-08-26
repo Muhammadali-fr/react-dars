@@ -14,6 +14,7 @@ import Cart from "./pages/Cart"
 import CartProvider from "./context/CartContext";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import { Toaster } from "react-hot-toast";
 
 
 export default function App() {
@@ -39,6 +40,7 @@ export default function App() {
     return (
         <div>
             <Provider store={store}>
+                <Toaster/>
                 <CartProvider>
                     <RouterProvider router={router} />
                 </CartProvider>
