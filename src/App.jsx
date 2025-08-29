@@ -26,8 +26,8 @@ export default function App() {
                     <Route index={true} element={<Home />} />
                     <Route path="about" element={<About />} />
                     <Route path="shop" element={<Shop />} />
-                    <Route path="product/:name" element={<Product />} />
                     <Route path="cart" element={<Cart />} />
+                    <Route path="i/:name" element={<Product />} />
                 </Route>
                 <Route element={<AuthLayout />}>
                     <Route path="auth/register" element={<Register />} />
@@ -40,7 +40,7 @@ export default function App() {
     return (
         <div>
             <Provider store={store}>
-                <Toaster/>
+                <Toaster />
                 <CartProvider>
                     <RouterProvider router={router} />
                 </CartProvider>

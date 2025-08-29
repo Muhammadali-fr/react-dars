@@ -1,32 +1,23 @@
-import { useState } from "react"
 
+// data 
+import images from "../data/data";
+
+// react 
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const [text, setText] = useState("");
-  const [array, setArray] = useState([]);
-
-  const addToDo = () => {
-    if (text.length < 4) {
-      return alert("kamida 4 ta harf yozing");
-    };
-
-    array.push(text);
-    setText("");
-  }
 
   return (
-    <div>
-      <input value={text} onChange={e => setText(e.target.value)} className="border" type="text" />
-      <button onClick={addToDo} className="text-white bg-blue-700 px-5 py-1 ">add</button>
-
+    <div className="grid grid-cols-4">
       {
-        array.map((soz, index) => (
-          <li key={index}>
-            <p>{soz}</p>
+        images.map((img, i) => (
+          <li key={i}>
+            <Link to={`/i/${img.id}`}>
+              <img title={`img id is ${i}`} src={img.Image} alt="image" />
+            </Link>
           </li>
         ))
       }
-
     </div>
   )
 }
