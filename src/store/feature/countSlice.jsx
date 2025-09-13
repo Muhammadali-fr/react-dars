@@ -17,5 +17,5 @@ const counterSlice = createSlice({
     }
 })
 
-export const { ayirish, qoshish } = counterSlice.actions;
+export const { ayirish,   } = counterSlice.actions;
 export default counterSlice.reducer;
