@@ -16,6 +16,10 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { Toaster } from "react-hot-toast";
 
+// react - query 
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+    
+const queryClient = new QueryClient();
 
 export default function App() {
 
@@ -39,12 +43,14 @@ export default function App() {
 
     return (
         <div>
-            <Provider store={store}>
-                <Toaster />
-                <CartProvider>
-                    <RouterProvider router={router} />
-                </CartProvider>
-            </Provider>
+            <QueryClientProvider client={queryClient}>
+                <Provider store={store}>
+                    <Toaster />
+                    <CartProvider>
+                        <RouterProvider router={router} />
+                    </CartProvider>
+                </Provider>
+            </QueryClientProvider>
         </div>
     )
 }

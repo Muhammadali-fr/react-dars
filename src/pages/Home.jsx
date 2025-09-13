@@ -1,25 +1,18 @@
+import { useQuery } from "@tanstack/react-query"
+import axios from "axios"
 
-// data 
-import images from "../data/data";
+export default function Home() {
 
-// react 
-import { Link } from "react-router-dom";
+  const query = useQuery({
+    queryFn: axios.get('http://localhost:8000/category'),
+    queryKey: 'getCategories'
+  })
 
-const Home = () => {
+  console.log(query)
 
   return (
-    <div className="grid grid-cols-4">
-      {
-        images.map((img, i) => (
-          <li key={i}>
-            <Link to={`/i/${img.id}`}>
-              <img title={`img id is ${i}`} src={img.Image} alt="image" />
-            </Link>
-          </li>
-        ))
-      }
+    <div>
+      home
     </div>
   )
 }
-
-export default Home
